@@ -4,11 +4,11 @@ import chess.ChessMatch;
 
 public class Program {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		ChessMatch chessMatch = new ChessMatch();
 		UI.printBoard(chessMatch.getPieces());
-		//realizei até a aula 184
+		//realizei atï¿½ a aula 188
 	}
 
 }

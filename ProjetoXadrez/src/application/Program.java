@@ -12,15 +12,13 @@ import chess.ChessPosition;
 
 public class Program {
 
-	public static void main(String[] args) throws Throwable {
+	public static void main(String[] args) {
 		
-		//retomar a partir da aula 209
 		Scanner sc = new Scanner(System.in);
 		ChessMatch chessMatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
 		
-		
-		while(!chessMatch.getCheckMate()) {
+		while (!chessMatch.getCheckMate()) {
 			try {
 				UI.clearScreen();
 				UI.printMatch(chessMatch, captured);
@@ -28,41 +26,39 @@ public class Program {
 				System.out.print("Source: ");
 				ChessPosition source = UI.readChessPosition(sc);
 				
-				boolean [][] possibleMoves = chessMatch.possibleMoves(source);
+				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces(), possibleMoves);
-				
 				System.out.println();
 				System.out.print("Target: ");
 				ChessPosition target = UI.readChessPosition(sc);
 				
 				ChessPiece capturedPiece = chessMatch.performamChessMove(source, target);
-		
-				if(capturedPiece != null) {
+				
+				if (capturedPiece != null) {
 					captured.add(capturedPiece);
 				}
 				
-				if(chessMatch.getPromoted() !=null) {
-					System.out.println("Insira a peça para promoção (B/N/R/Q) ");
+				if (chessMatch.getPromoted() != null) {
+					System.out.print("Enter piece for promotion (B/N/R/Q): ");
 					String type = sc.nextLine().toUpperCase();
-					while(!type.equals("B") && !type.equals("N") && !type.equals("R")&& !type.equals("Q")) {
-						System.out.println("Valor invalido. Insira a peça para promoção (B/N/R/Q) ");
+					while (!type.equals("B") && !type.equals("N") && !type.equals("R") & !type.equals("Q")) {
+						System.out.print("Invalid value! Enter piece for promotion (B/N/R/Q): ");
 						type = sc.nextLine().toUpperCase();
 					}
 					chessMatch.replacePromotedPiece(type);
 				}
 			}
-			catch(ChessException e) {
+			catch (ChessException e) {
 				System.out.println(e.getMessage());
-				sc.hasNextLine();
+				sc.nextLine();
 			}
-			catch(InputMismatchException e) {
+			catch (InputMismatchException e) {
 				System.out.println(e.getMessage());
-				sc.hasNextLine();
+				sc.nextLine();
 			}
-		}	
+		}
 		UI.clearScreen();
 		UI.printMatch(chessMatch, captured);
 	}
-		
 }

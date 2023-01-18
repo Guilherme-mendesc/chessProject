@@ -29,7 +29,7 @@ public class ChessMatch {
 	
 	
 	
-	public ChessMatch() throws Exception {
+	public ChessMatch() {
 		board = new Board(8,8);
 		turn =1;
 		currentPlayer = Color.WHITE;
@@ -233,7 +233,7 @@ public class ChessMatch {
 			throw new ChessException("there is no piece on source position");
 		}
 		if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()) {
-			throw new ChessException("A peça escolhida não é sua !");
+			throw new ChessException("A peca escolhida não é sua !");
 		}
 		if(!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException("There is no possible moves for chosen piece");
@@ -242,7 +242,7 @@ public class ChessMatch {
 	
 	private void validadeTargetPosition(Position source, Position target) {
 		if (!board.piece(source).posibleMove(target)) {
-			throw new ChessException("A peça escolhida nao pode se movimentar para a posição de destino");
+			throw new ChessException("A peca escolhida nao pode se movimentar para a posição de destino");
 		}
 	}
 	
@@ -330,7 +330,7 @@ public class ChessMatch {
 	        placeNewPiece('a', 8, new Rook(board, Color.BLACK));
 	    	placeNewPiece('b', 8, new Knight(board, Color.BLACK));
 	        placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
-	        placeNewPiece('d', 1, new Queen(board, Color.BLACK));
+	        placeNewPiece('d', 8, new Queen(board, Color.BLACK));
 	        placeNewPiece('e', 8, new King(board, Color.BLACK, this));
 	        placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
 	        placeNewPiece('g', 8, new Knight(board, Color.BLACK));

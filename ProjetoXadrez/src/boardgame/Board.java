@@ -10,7 +10,7 @@ public class Board {
 	
 	public Board(int rows, int columns){
 		if (rows < 1 || columns <1) {
-			throw new BoardException(" Erro ao criar tabuleiro, é necessario no minimo 1 linha e coluna");
+			throw new BoardException(" Erro ao criar tabuleiro, é necessario no minimo 1 linha e 1 coluna");
 		}
 		this.rows = rows;
 		this.columns = columns;
